@@ -56,3 +56,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Disable tab completion
 compdef -d rake
+
+
+eval "$(rbenv init -)"

@@ -15,7 +15,7 @@ if [ "$ZSHENV_SOURCED" != "true" ]; then
   export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
   export PATH=$HOME/Library/Android/sdk/tools:$PATH
   # Load rbenv
-  export PATH=/Users/$(whoami)/.rbenv/shims:/usr/local/opt/bin:$PATH
+  export PATH=/Users/$(whoami)/.rbenv/shims:/usr/local/opt:$PATH
   if [ -n "$TMUX" ]; then
     eval "$(rbenv init - --no-rehash)"
   fi
