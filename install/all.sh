@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Installing SanguineRane configuration for $(whoami)"
+echo "Installing fzf configuration for $(whoami)"
 
 # ensure sudo access
 sudo -p "Enter your password: " echo "We're good to go!"
@@ -43,8 +43,8 @@ fi
 
 # ensure dotfiles are up to date
 sudo rm -rf $HOME/.dots
-echo "Cloning drn/dotfiles to $HOME/.dots"
-git clone git@github.com:drn/dotfiles.git $HOME/.dots --quiet
+echo "Cloning fzf/dotfiles to $HOME/.dots"
+git clone https://github.com/fzf/dotfiles.git $HOME/.dots --quiet
 
 # install dotfiles
 bash $HOME/.dots/install/dots.sh
