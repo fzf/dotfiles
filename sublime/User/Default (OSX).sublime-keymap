@@ -1,0 +1,35 @@
+[
+    { "ignored_packages": []},
+    { "vintage_start_in_command_mode": true},
+    { "keys": ["super+ctrl+alt+d"], "command": "toggle_side_bar" },
+    { "keys": ["super+ctrl+left"], "command": "focus_group", "args": { "group": 0 } },
+    { "keys": ["super+ctrl+right"], "command": "focus_group", "args": { "group": 1 } },
+
+    { "keys": ["j", "j"], "command": "exit_insert_mode",
+      "context":
+      [
+        { "key": "setting.command_mode", "operand": false },
+        { "key": "setting.is_widget", "operand": false }
+      ]
+    },
+    { "keys": ["k", "k"], "command": "exit_insert_mode",
+      "context":
+      [
+        { "key": "setting.command_mode", "operand": false },
+        { "key": "setting.is_widget", "operand": false }
+      ]
+    },
+    { "keys": ["Y"], "command": "clipboard_copy",
+      "context": [{"key": "clipboardcopy_fake", "operator":"equal", "operand":true}, {"key": "setting.command_mode"}]
+    },
+    { "keys": ["y"], "command": "clipboard_copy",
+      "context": [{"key": "clipboardcopy_fake", "operator":"equal", "operand":true}, {"key": "setting.command_mode"}]
+    },
+    { "keys": ["D"], "command": "clipboard_copy",
+      "context": [{"key": "clipboardcopy_fake", "operator":"equal", "operand":true}, {"key": "setting.command_mode"}]
+    },
+    { "keys": ["d"], "command": "clipboard_copy",
+      "context": [{"key": "clipboardcopy_fake", "operator":"equal", "operand":true}, {"key": "setting.command_mode"}]
+    },
+    { "keys": ["super+ctrl+\\"], "command": "valign" }
+]

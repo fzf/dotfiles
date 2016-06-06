@@ -48,23 +48,15 @@ git clone https://github.com/fzf/dotfiles.git $HOME/.dots --quiet
 
 # install dotfiles
 bash $HOME/.dots/install/dots.sh
-# install terminal utilites
 bash $HOME/.dots/install/utils.sh
-# install node packages
 bash $HOME/.dots/install/node.sh
-# install bin files
 bash $HOME/.dots/install/bin.sh
-# install zsh configuration
 bash $HOME/.dots/install/zsh.sh
-# install git configuration
 bash $HOME/.dots/install/git.sh
-# install fonts
 bash $HOME/.dots/install/fonts.sh
-# install vim configuration
 bash $HOME/.dots/install/vim.sh
-# install os x configuration
 bash $HOME/.dots/install/osx.sh
-# install ubersicht widgets
 bash $HOME/.dots/install/ubersicht.sh
-# install hammerspoon config
 bash $HOME/.dots/install/hammerspoon.sh
+bash $HOME/.dots/install/sublime.sh
+
