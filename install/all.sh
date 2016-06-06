@@ -59,4 +59,5 @@ bash $HOME/.dots/install/osx.sh
 bash $HOME/.dots/install/ubersicht.sh
 bash $HOME/.dots/install/hammerspoon.sh
 bash $HOME/.dots/install/sublime.sh
+bash $HOME/.dots/install/seil.sh
 
