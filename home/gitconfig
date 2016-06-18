@@ -5,7 +5,7 @@
 [core]
   # default ignored files for OSX; see below
   excludesfile = ~/.gitignore
-  editor = nvim -f
+  editor = vim
   preloadindex = true
   pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
 
