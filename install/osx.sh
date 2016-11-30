@@ -85,8 +85,8 @@ echo "Enable full keyboard access for all controls"
 echo "(e.g. enable Tab in modal dialogs)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-echo "Set a blazingly fast keyboard repeat rate"
-defaults write NSGlobalDomain KeyRepeat -int 0
+echo "Set a keyboard repeat rate"
+defaults write NSGlobalDomain KeyRepeat -int 2
 
 echo "Disable auto-correct"
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
@@ -190,6 +190,10 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 echo "Prevent Time Machine from prompting to use new hard drives as backup volume"
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+echo "Bottom right screen corner → Sleep display"
+defaults write com.apple.dock wvous-br-corner -int 10
+defaults write com.apple.dock wvous-br-modifier -int 0
 
 echo "ensure changes take effect immediately"
 killall Dock
