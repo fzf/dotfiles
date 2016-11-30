@@ -1,5 +1,6 @@
 # formulae
 brew 'heroku-toolbelt'
+brew 'hub'
 brew 'imagemagick'
 brew 'lua'
 brew 'mysql'
