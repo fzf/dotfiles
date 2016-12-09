@@ -110,8 +110,8 @@
   rpu = remote prune upstream
 
 [user]
-  name = Darren Cheng
-  email = darren@thanx.com
+	name = Fletcher Fowler
+	email = fletch@fzf.me
 
 [github]
   user = drn
