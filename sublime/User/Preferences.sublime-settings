@@ -18,7 +18,7 @@
 		"*.jar",
 		"*.zip"
 	],
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"color_scheme": "Packages/Theme - Spacegray/base16-eighties.dark.tmTheme",
 	"draw_white_space": "all",
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":

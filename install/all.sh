@@ -61,3 +61,4 @@ bash $HOME/.dots/install/hammerspoon.sh
 bash $HOME/.dots/install/sublime.sh
 bash $HOME/.dots/install/seil.sh
 bash $HOME/.dots/install/better_touch_tool.sh
+bash $HOME/.dots/install/mas.sh
