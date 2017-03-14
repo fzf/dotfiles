@@ -1,0 +1,115 @@
+Pry.commands.alias_command 'e', 'exit'
+Pry.commands.alias_command 'q', 'exit-program'
+Pry.commands.alias_command 'w', 'whereami'
+
+if defined?(Rails)
+  def outlog
+    ActiveRecord::Base.logger = Logger.new(STDOUT)
+    Rails.logger = Logger.new(STDOUT)
+  end
+end
+
+if defined?(PryDebugger) || defined?(PryByebug)
+  Pry.commands.alias_command 'c', 'continue'
+  Pry.commands.alias_command 's', 'step'
+  Pry.commands.alias_command 'n', 'next'
+  Pry.commands.alias_command 'f', 'finish'
+end
+
+# https://github.com/michaeldv/awesome_print/
+# $ gem install awesome_print
+begin
+  require 'awesome_print'
+  Pry.config.print = proc { |output, value| output.puts value.ai(:indent => 2) }
+rescue LoadError
+end
+
+Pry.config.colors = {
+  reset:         "\e[0m",
+  bold:          "\e[1m",
+  black:         "\e[30m",
+  red:           "\e[31m",
+  green:         "\e[32m",
+  yellow:        "\e[33m",
+  blue:          "\e[34m",
+  magenta:       "\e[35m",
+  cyan:          "\e[36m",
+  light_gray:    "\e[37m",
+  dark_gray:     "\e[90m",
+  light_red:     "\e[91m",
+  light_green:   "\e[92m",
+  light_yellow:  "\e[93m",
+  light_blue:    "\e[94m",
+  light_magenta: "\e[95m",
+  light_cyan:    "\e[96m",
+  white:         "\e[97m"
+}
+
+# customize pry prompt
+Pry.config.prompt = proc do |object, nest_level, _|
+  colors = Pry.config.colors
+
+  prompt = ""
+  prompt << colors[:reset]
+  prompt << colors[:bold]
+  prompt << colors[:blue]
+  if ENV.key?('PROMPT_NAME')
+    prompt << ENV['PROMPT_NAME']
+  elsif defined?(Rails) && Rails.respond_to?(:application)
+    prompt << Rails.application.class.name.gsub('::Application','')
+  else
+    prompt << RUBY_VERSION.to_s
+  end
+  prompt << colors[:reset]
+
+  level = ""
+  if !nest_level.zero?
+    level << " "
+    level << colors[:reset]
+    level << colors[:bold]
+    level << colors[:magenta]
+    level << nest_level.to_s
+    level << colors[:reset]
+  end
+
+  context = Pry.view_clip(object)
+  case context
+  when "main"; context = ""
+  else
+    context = context.to_s.gsub('#<','').gsub('>','')
+    context = '*::' + context.gsub(/.*::/,'') if context.include?('::')
+    context = " " + colors[:light_red] + context + colors[:reset]
+  end
+
+  magenta = "#{colors[:bold]}#{colors[:magenta]}❯#{colors[:reset]}"
+  blue = "#{colors[:bold]}#{colors[:blue]}❯#{colors[:reset]}"
+  cyan = "#{colors[:bold]}#{colors[:cyan]}❯#{colors[:reset]}"
+
+  prefix = magenta + blue + magenta + " "
+  suffix = " " + cyan + " " + colors[:reset]
+
+  prefix + prompt + context + level + suffix
+end
+
+# Legible callstack display
+def callstack
+  colors = Pry.config.colors
+  files = []
+  lines = []
+  methods = []
+  caller.each do |line|
+    splits = line.gsub(/.*\//,'').split(':',3)
+    files << splits[0]
+    lines << splits[1]
+    methods << splits[2]
+  end
+  linesize = lines.max { |x,y| x.length <=> y.length }.length
+  filesize = files.max { |x,y| x.length <=> y.length }.length
+  (1..caller.count-1).each do |i|
+    puts colors[:bold] + colors[:cyan] +
+    lines[i].to_s.rjust(linesize) + '  ' + colors[:bold] + colors[:red] +
+      files[i].to_s.ljust(filesize) + '  ' + colors[:reset] + colors[:magenta] +
+      methods[i].to_s
+  end
+  nil
+end

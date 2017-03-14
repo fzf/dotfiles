@@ -1,0 +1,37 @@
+if [ "$ZSHENV_SOURCED" != "true" ]; then
+  export ZSHENV_SOURCED=true
+
+  # Include ~/bin scripts in PATH
+  export PATH=$HOME/bin:$PATH
+  # Include ~/.secure scripts in PATH
+  export PATH=$HOME/.secure:$PATH
+  # Include Homebrew in PATH
+  export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+  # Include git extensions in PATH
+  export PATH=$HOME/.git-extensions:$PATH
+  # Include MySQL in PATH
+  export PATH=/usr/local/mysql/bin:$PATH
+  # Include Android tools in PATH
+  export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
+  export PATH=$HOME/Library/Android/sdk/tools:$PATH
+  # Load rbenv
+  export PATH=$HOME/.rbenv/shims:/usr/local/opt/bin:$PATH
+  if [ -n "$TMUX" ]; then
+    eval "$(rbenv init - --no-rehash)"
+  fi
+  # Load pyenv
+  export PYENV_ROOT=$HOME/.pyenv
+  export PATH=$PYENV_ROOT/shims:$PATH
+  if [ -n "$TMUX" ]; then
+    eval "$(pyenv init -)"
+  fi
+  # Include binstubs in path
+  export PATH=.bundle/bin:$PATH
+  # Set $DOTS
+  export DOTS="$HOME/.dots"
+  # Set default Postgres host and port
+  export PGHOST=localhost
+  export PGPORT=5432
+  export LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
+fi
