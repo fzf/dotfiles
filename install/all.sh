@@ -13,8 +13,13 @@ cd ~
 echo "Ensuring ZSH is the default shell"
 
 # if homebrew is installed
-if hash brew 2>/dev/null; then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+which -s brew
+if [[ $? != 0 ]] ; then
+    # Install Homebrew
+    # https://github.com/mxcl/homebrew/wiki/installation
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+else
+    brew update
 fi
 
 # if homebrew zsh is not the current shell
