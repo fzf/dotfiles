@@ -1,9 +1,0 @@
-#!/bin/sh
-
-branch="$(git me)"
-if [ "$(echo $branch | grep '\(TA\|PD\)-')" ]; then
-  prefix="$branch. "
-  if [ -z "$(cat $1 | grep $prefix)" ]; then
-    echo "$prefix$(cat $1)" > "$1"
-  fi
-fi

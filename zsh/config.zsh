@@ -62,7 +62,3 @@ function _z_wrapper() {
   fi
 }
 alias ${_Z_CMD:-z}='_z_wrapper 2>&1'
-
-# Autoload tmux
-if [ "$TMUX" = "" ]; then smux master; fi
-

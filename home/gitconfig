@@ -114,7 +114,7 @@
 	email = fletch@fzf.me
 
 [github]
-  user = drn
+  user = fzf
 
 [credential]
   helper = osxkeychain
